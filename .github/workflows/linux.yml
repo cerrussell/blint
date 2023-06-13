@@ -27,7 +27,7 @@ jobs:
     - name: Binary gnu build
       run: |
         cd blint
-        /opt/hostedtoolcache/Python/${{ steps.poetry.outputs.python-version}/x64/Scripts/poetry run pyinstaller blint/cli.py --noconfirm --log-level=WARN --nowindow --onefile --name blint --collect-all blint --upx-dir ~/.local/bin/
+        /opt/hostedtoolcache/Python/${{ steps.poetry.outputs.python-version }}/x64/Scripts/poetry run pyinstaller blint/cli.py --noconfirm --log-level=WARN --nowindow --onefile --name blint --collect-all blint --upx-dir ~/.local/bin/
         ./dist/blint -i dist/blint -o /tmp/reports
       env:
         PYTHONIOENCODING: utf-8
