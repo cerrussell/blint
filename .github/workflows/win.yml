@@ -15,6 +15,7 @@ jobs:
       with:
         python-version: '3.9'
     - name: Install poetry
+      id: poetry
       run: |
         python -m pip install twine setuptools wheel poetry
         cd blint
@@ -23,7 +24,7 @@ jobs:
     - name: Binary windows build
       run: |
         cd blint
-        C:\hostedtoolcache\windows\Python\3.9.13\x64\Scripts\poetry run pyinstaller blint/cli.py --noconfirm --log-level=WARN --nowindow --onefile --name blint --collect-all blint --disable-windowed-traceback -i blint.ico --version-file=file_version_info.txt
+        C:\hostedtoolcache\windows\Python\${{ steps.poetry.outputs.python-version }}\x64\Scripts\poetry run pyinstaller blint/cli.py --noconfirm --log-level=WARN --nowindow --onefile --name blint --collect-all blint --disable-windowed-traceback -i blint.ico --version-file=file_version_info.txt
         set PYTHONIOENCODING=UTF-8
         .\dist\blint.exe -i .\dist\blint.exe -o reports --no-banner
       env:
