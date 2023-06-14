@@ -31,7 +31,7 @@ jobs:
           --collect-all blint \
           --disable-windowed-traceback \
           -i blint.ico \
-          --version-file=file_version_info.txt 
+          --version-file=file_version_info.txt \
         set PYTHONIOENCODING=UTF-8
         .\dist\blint.exe -i .\dist\blint.exe -o reports --no-banner
       env:
