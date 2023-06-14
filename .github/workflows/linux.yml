@@ -33,7 +33,7 @@ jobs:
           --onefile \
           --name blint \
           --collect-all blint \
-          --upx-dir ~/.local/bin/ \
+          --upx-dir ~/.local/bin/ 
         ./dist/blint -i dist/blint -o /tmp/reports
       env:
         PYTHONIOENCODING: utf-8
