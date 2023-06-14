@@ -28,7 +28,12 @@ jobs:
     - name: Binary gnu build
       run: |
         cd blint
-        python -m poetry run pyinstaller blint/cli.py --noconfirm --log-level=WARN --nowindow --onefile --name blint --collect-submodules blint --upx-dir ~/.local/bin/
+        python -m poetry run pyinstaller blint/cli.py --noconfirm --log-level=WARN \
+          --nowindow \
+          --onefile \
+          --name blint \
+          --collect-all blint \
+          --upx-dir ~/.local/bin/ 
         ./dist/blint -i dist/blint -o /tmp/reports
       env:
         PYTHONIOENCODING: utf-8
