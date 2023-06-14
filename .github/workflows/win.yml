@@ -24,9 +24,7 @@ jobs:
     - name: Binary windows build
       run: |
         cd blint
-        python -m poetry run pyinstaller blint/cli.py --noconfirm --log-level=WARN \
-          --nowindow \
-          --onefile \
+        python -m poetry run pyinstaller blint/cli.py --noconfirm --log-level=WARN --nowindow --onefile \
           --name blint \
           --collect-all blint \
           --disable-windowed-traceback \
