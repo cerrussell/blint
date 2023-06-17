@@ -34,9 +34,10 @@ jobs:
         run: |
           poetry install --no-cache --without dev
           echo "version: $(poetry version)" >> $GITHUB_OUTPUT
+          if [[ $(poetry version) == $('blint ${{ github.ref }}']]; then exit 0; else exit 1; fi
           
       - name: Release PyPI
-        if: steps.prep.outputs.version == 'blint ${{ github.ref }}' && steps.prep.conclusion == 'success'
+        if: startsWith(github.ref, 'refs/tags/')
         run: |
           # poetry run pytest
           poetry publish --build --username $PYPI_USERNAME --password $PYPI_PASSWORD
